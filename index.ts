@@ -1,15 +1,15 @@
-import express from "express";
+import express, { Request, Response, Application } from "express";
 import http from "http";
 
-const app: any = express();
+const app: Application = express();
 const port: number = 3002;
 
 const server = http.createServer(app);
 
-server.listen(port, () => {
+server.listen(port, (): void => {
   console.log(`Listening *: ${port}`);
 });
 
-app.get("/", (req: any, res: any) => {
+app.get("/", (req: Request, res: Response): void => {
   res.send("Welcome");
 });
