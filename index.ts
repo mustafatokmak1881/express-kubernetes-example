@@ -2,14 +2,13 @@ import express, { Request, Response, Application } from "express";
 import http from "http";
 
 const app: Application = express();
-const port: number = 3002;
+const port = process.env.PORT || 3000;
 
-const server = http.createServer(app);
-
-server.listen(port, (): void => {
-  console.log(`Listening *: ${port}`);
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello World!");
 });
 
-app.get("/", (req: Request, res: Response): void => {
-  res.send("Welcome");
+const server = http.createServer(app);
+server.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
